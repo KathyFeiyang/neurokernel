@@ -42,7 +42,7 @@ if not re.search('mpirun|mpiexec', parent_name):
     # notebook because the overriden iostreams don't have a file
     # descriptor:
     try:
-        subprocess.call(['mpiexec', '--oversubscribe', '-np', '1']+MPIEXEC_EXTRA_OPTS+\
+        subprocess.call(['/content/NK/bin/mpiexec', '--allow-run-as-root', '--oversubscribe', '-np', '1']+MPIEXEC_EXTRA_OPTS+\
                         [sys.executable, script_name]+sys.argv[1:],
                         env=env,
                         stdout=sys.stdout,
@@ -50,7 +50,7 @@ if not re.search('mpirun|mpiexec', parent_name):
                         stdin=sys.stdin)
     except IOError:
         try:
-            subprocess.call(['mpiexec', '--oversubscribe', '-np', '1',
+            subprocess.call(['/content/NK/bin/mpiexec', '--allow-run-as-root', '--oversubscribe', '-np', '1',
                             sys.executable, script_name]+sys.argv[1:],
                             env=env)
         except Exception as e:
