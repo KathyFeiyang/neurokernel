@@ -86,9 +86,9 @@ if __name__ == '__main__':
     man.switch_gpu(0)
     y_gpu = gpuarray.to_gpu(np.array([4, 5, 6]))
     man.switch_gpu(1)
-    print x_gpu
+    print (x_gpu)
     man.switch_gpu(0)
-    print y_gpu
+    print (y_gpu)
 
     # This will cause an error:
-    print x_gpu
+    print (x_gpu)
